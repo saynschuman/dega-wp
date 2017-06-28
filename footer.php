@@ -55,7 +55,7 @@
             </nav>            
             <div class="row header-inner">
                 <div class="col-md-4 left">
-                    <div class="logo"><a href=""><img src="<?php echo get_template_directory_uri() ?>/assets/img/logo.jpg" alt=""></a></div>
+                    <div class="logo"><a href="<?php bloginfo('url'); ?>"><img src="<?php echo get_template_directory_uri() ?>/assets/img/logo.jpg" alt=""></a></div>
                 </div>
                 <div class="col-md-8 center">
                     <div class="row">

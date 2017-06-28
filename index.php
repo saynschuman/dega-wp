@@ -59,54 +59,35 @@ get_header(); ?>
 				<div class="center col-md-8 med-10">
 					<div class="title">Популярное среди наших клиентов</div>
 					<div class="row med-10">
-						<div class="col-md-4 col-sm-4 col-xs-8 bl">
-							<a href="">
-								<img src="<?php echo get_template_directory_uri() ?>/assets/img/img-1.jpg" alt="">
-								<div class="tit">Прием врачей</div>
-							</a>
-						</div>
-						<div class="col-md-4 col-sm-4 col-xs-8 bl">
-							<a href="">
-								<img src="<?php echo get_template_directory_uri() ?>/assets/img/cosmetic.jpg" alt="">
-								<div class="tit">Косметология</div>
-							</a>
-						</div>
-						<div class="col-md-4 col-sm-4 col-xs-8 bl">
-							<a href="">
-								<img src="<?php echo get_template_directory_uri() ?>/assets/img/uzi.jpg" alt="">
-								<div class="tit">УЗИ</div>
-							</a>
-						</div>
-						<div class="col-md-4 col-sm-4 col-xs-8 bl">
-							<a href="">
-								<img src="<?php echo get_template_directory_uri() ?>/assets/img/analisy.jpg" alt="">
-								<div class="tit">Анализы</div>
-							</a>
-						</div>
-						<div class="col-md-4 col-sm-4 col-xs-8 bl">
-							<a href="">
-								<img src="<?php echo get_template_directory_uri() ?>/assets/img/ginekologiya.jpg" alt="">
-								<div class="tit">Гинекология, эндокринология</div>
-							</a>
-						</div>
-						<div class="col-md-4 col-sm-4 col-xs-8 bl">
-							<a href="">
-								<img src="<?php echo get_template_directory_uri() ?>/assets/img/dermatologiya.jpg" alt="">
-								<div class="tit">Дерматология</div>
-							</a>
-						</div>
-						<div class="col-md-4 col-sm-4 col-xs-8 bl">
-							<a href="">
-								<img src="<?php echo get_template_directory_uri() ?>/assets/img/diagnostika.jpg" alt="">
-								<div class="tit">Функциональная диагностика </div>
-							</a>
-						</div>
-						<div class="col-md-4 col-sm-4 col-xs-8 bl">
-							<a href="">
-								<img src="<?php echo get_template_directory_uri() ?>/assets/img/anti-age10.jpg" alt="">
-								<div class="tit">Anti-age</div>
-							</a>
-						</div>						
+						<?php 
+							$args = array(
+								'numberposts' => 8,
+								'category'    => 2,
+								'orderby'     => 'date',
+								'order'       => 'DESC',
+								'include'     => array(),
+								'exclude'     => array(),
+								'meta_key'    => '',
+								'meta_value'  =>'',
+								'post_type'   => 'post',
+								'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+							);
+
+							$posts = get_posts( $args );
+
+							foreach($posts as $post){ setup_postdata($post); ?>
+							    <div class="col-md-4 col-sm-4 col-xs-8 bl">
+									<a href="<?php echo get_permalink(); ?>">
+										<img src="<?php echo get_the_post_thumbnail_url()?>" alt="">
+										<div class="tit"><?php the_title() ?></div>
+									</a>
+								</div>
+							<?php }
+
+							wp_reset_postdata(); // сброс
+
+						?>	
+
 					</div>
 				</div>
 				<div class="col-md-4">

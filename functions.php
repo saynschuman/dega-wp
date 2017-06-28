@@ -23,5 +23,13 @@ $defaults = array(
 	'admin-head-callback'    => '',
 	'admin-preview-callback' => ''
 );
+
+// custom background
+
 add_theme_support( 'custom-background', $defaults );
+
+// post thumbnails
+
+add_theme_support( 'post-thumbnails' );
+
 ?>
